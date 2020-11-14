@@ -1,0 +1,26 @@
+.root {
+  @apply flex flex-col;
+}
+
+.root > textarea,
+.root > input {
+  @apply
+    bg-base-bg
+    text-xs
+    py-2
+    px-2
+    w-full
+    appearance-none
+    transition
+    duration-150
+    ease-in-out
+    border
+    border-accents-2
+    text-accents-6
+    rounded
+  ;
+
+  &:focus {
+    @apply outline-none border-accents-5;
+  }
+}

@@ -1,20 +1,26 @@
 import React, { FC, useRef, JSXElementConstructor } from 'react';
 import { AriaTextFieldOptions, useTextField } from '@react-aria/textfield';
+import cn from 'classnames';
+
+import s from './Input.module.css';
 
 interface Props extends AriaTextFieldOptions {
   Component?: string | JSXElementConstructor<any>;
   onChange?: (...args: any[]) => any;
   label: string;
+  className?: string;
 }
 
 const Input: FC<Props> = (props) => {
   const {
     Component = 'input',
+    className,
     onChange,
     ...rest
   } = props;
 
   const ref = useRef<HTMLInputElement>(null);
+  const rootClassName = cn(s.root, {}, className);
   const { labelProps, inputProps } = useTextField(rest, ref);
 
   const handleOnChange = (e: any) => {
@@ -26,7 +32,7 @@ const Input: FC<Props> = (props) => {
   };
 
   return (
-    <div>
+    <div className={rootClassName}>
       <label {...labelProps}>{rest.label}</label>
       <Component
         {...rest}

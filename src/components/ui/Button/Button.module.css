@@ -1,0 +1,79 @@
+.root {
+  --button-fg: var(--base-background);
+  --button-bg: var(--base-foreground);
+  --button-border: var(--base-foreground);
+
+  --button-fg-hover: var(--base-foreground);
+  --button-bg-hover: undefined;
+  --button-border-hover: var(--base-foreground);
+
+  @apply
+    relative
+    inline-flex
+    items-center
+    justify-center
+    z-0
+    text-center
+    no-underline
+    whitespace-no-wrap
+    font-medium
+    px-8
+    text-sm
+    rounded
+    flex-shrink-0
+    transition
+    duration-200
+    border
+    select-none
+    outline-none
+    overflow-hidden
+    cursor-pointer
+  ;
+
+  --gap-ratio: 1;
+  appearance: none;
+  line-height: 38px;
+  font-weight: 500;
+  height: 40px;
+  color: var(--button-fg);
+  background-color: var(--button-bg);
+  border-color: var(--button-border);
+
+  &:focus,
+  &:active,
+  &:hover {
+    outline: none;
+    color: var(--button-fg-hover);
+    background-color: var(--button-bg-hover);
+    border-color: var(--button-border-hover);
+  }
+
+
+  &.disabled {
+    background: rgb(0 0 0 / 73%) !important;
+    border-color: rgb(0 0 0 / 73%) !important;
+    cursor: default;
+
+    &:focus,
+    &:active,
+    &:hover {
+      color: var(--base-background);
+    }
+  }
+
+  &.slim {
+    height: 27px;
+    padding: 0px 16px;
+    min-width: auto;
+  }
+
+  &.secondary {
+    --button-fg: var(--accents-5);
+    --button-bg: var(--base-background);
+    --button-border: var(--accents-2);
+
+    --button-fg-hover: var(--base-foreground);
+    --button-bg-hover: var(--base-background);
+    --button-border-hover: var(--base-foreground);
+  }
+}
