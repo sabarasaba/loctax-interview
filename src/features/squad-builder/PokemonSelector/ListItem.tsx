@@ -5,12 +5,16 @@ import { Pokemon } from '../types';
 interface Props {
   pokemon: Pokemon;
   style: any;
+  showDetailsModal: (...args: any[]) => any;
 }
 
-const ListItem: FC<Props> = ({ pokemon, style }) => {
+const ListItem: FC<Props> = ({ pokemon, style, showDetailsModal }) => {
   return (
     <div className="p-5 " style={style}>
-      <div className="h-full overflow-hidden w-full border-2 border-transparent rounded-md bg-white shadow-lg cursor-pointer transition duration-100 ease-in-out hover:border-base-success">
+      <div
+        onClick={() => showDetailsModal(pokemon.name)}
+        className="h-full overflow-hidden w-full border-2 border-transparent rounded-md bg-white shadow-lg cursor-pointer transition duration-100 ease-in-out hover:border-base-success"
+      >
         <div className="bg-accents-2">
           <img
             className="mx-auto"

@@ -60,20 +60,4 @@
       color: var(--base-background);
     }
   }
-
-  &.slim {
-    height: 27px;
-    padding: 0px 16px;
-    min-width: auto;
-  }
-
-  &.secondary {
-    --button-fg: var(--accents-5);
-    --button-bg: var(--base-background);
-    --button-border: var(--accents-2);
-
-    --button-fg-hover: var(--base-foreground);
-    --button-bg-hover: var(--base-background);
-    --button-border-hover: var(--base-foreground);
-  }
 }

@@ -8,9 +8,10 @@ import { Input } from 'src/components/ui';
 
 interface Props {
   list: Pokemon[];
+  showDetailsModal: (...args: any[]) => any;
 }
 
-const PokemonSelector: FC<Props> = ({ list }) => {
+const PokemonSelector: FC<Props> = ({ list, showDetailsModal }) => {
   const [filter, setFilter] = useState<string>('');
 
   const dataSource = useMemo((): Pokemon[] => {
@@ -18,7 +19,7 @@ const PokemonSelector: FC<Props> = ({ list }) => {
   }, [list, filter]);
 
   const Column = memo(({ index, style }: any) => (
-    <ListItem pokemon={dataSource[index]} style={style} />
+    <ListItem pokemon={dataSource[index]} {...{ style, showDetailsModal }} />
   ), areEqual);
 
   return (

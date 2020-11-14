@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { OverlayProvider } from 'react-aria';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
 import 'src/assets/css/main.css';
@@ -14,9 +15,11 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <Layout>
-        <SquadBuilder />
-      </Layout>
+      <OverlayProvider>
+        <Layout>
+          <SquadBuilder />
+        </Layout>
+      </OverlayProvider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
