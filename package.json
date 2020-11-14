@@ -1,7 +1,13 @@
 {
-  "name": "fe-recruitement",
+  "name": "loctax-interview",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.2",
@@ -16,23 +22,21 @@
     "styled-components": "^4.4.1",
     "typescript": "^4.0.3"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@types/styled-components": "^5.1.4",
+    "graphql-tag": "^2.10.1"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "parser": "babel-eslint",
+    "rules": {
+      "semi": "warn"
+    }
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "@types/styled-components": "^5.1.4",
-    "graphql-tag": "^2.10.1"
-  }
+  ]
 }
