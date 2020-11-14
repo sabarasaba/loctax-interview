@@ -20,6 +20,9 @@ module.exports = {
         'accents-6': 'var(--accents-6)',
         'accents-7': 'var(--accents-7)',
         'accents-8': 'var(--accents-8)'
+      },
+      maxWidth: {
+        'screen-2xl': '1600px',
       }
     },
   }

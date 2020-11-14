@@ -7,8 +7,8 @@ import s from './Input.module.css';
 interface Props extends AriaTextFieldOptions {
   Component?: string | JSXElementConstructor<any>;
   onChange?: (...args: any[]) => any;
-  label: string;
   className?: string;
+  label: string;
 }
 
 const Input: FC<Props> = (props) => {
