@@ -20,7 +20,7 @@ const ListItem: FC<Props> = ({ pokemon, style, showDetailsModal }) => {
             className="mx-auto"
             style={{ width: 150, height: 150 }}
             src={pokemon.image}
-            alt={`ths is what ${pokemon.name} looks like`}
+            alt={`this is what ${pokemon.name} looks like`}
           />
         </div>
         <div className="p-3">

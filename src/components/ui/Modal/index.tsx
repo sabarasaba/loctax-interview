@@ -44,7 +44,7 @@ const Modal: FC<Props> = ({
               enter="transition-opacity ease-linear duration-200"
               enterFrom="opacity-0"
               enterTo="opacity-100"
-              leave="transition-opacity ease-linear duration-200"
+              leave="transition-opacity ease-linear duration-0"
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >

@@ -13,14 +13,12 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <OverlayProvider>
-        <Layout>
-          <SquadBuilder />
-        </Layout>
-      </OverlayProvider>
-    </ApolloProvider>
-  </React.StrictMode>,
+  <ApolloProvider client={client}>
+    <OverlayProvider>
+      <Layout>
+        <SquadBuilder />
+      </Layout>
+    </OverlayProvider>
+  </ApolloProvider>,
   document.getElementById('root')
 );
