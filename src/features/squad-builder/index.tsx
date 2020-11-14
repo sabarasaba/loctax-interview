@@ -1,15 +1,22 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
 
-import { Button, Input } from 'src/components/ui';
+import { getAllPokemons } from './queries';
+import PokemonSelector from './PokemonSelector';
+import SelectedSquad from './SelectedSquad';
 
-export default () => {
+const SquadBuilder = () => {
+  const { loading, error, data } = useQuery(getAllPokemons);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
   return (
     <div>
-      <Input
-        placeholder="Hola"
-        label="Pokemon Name"
-      />
-      <Button>Submit Pokemon</Button>
+      <PokemonSelector list={data.Pokemons} />
+      <SelectedSquad />
     </div>
   );
 };
+
+export default SquadBuilder;
