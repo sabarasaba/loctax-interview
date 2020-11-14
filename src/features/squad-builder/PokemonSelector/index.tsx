@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useState, useMemo } from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List, areEqual } from 'react-window';
 
@@ -7,12 +7,18 @@ import { Pokemon } from '../types';
 import { Input } from 'src/components/ui';
 
 interface Props {
-  list: Array<Pokemon>;
+  list: Pokemon[];
 }
 
 const PokemonSelector: FC<Props> = ({ list }) => {
+  const [filter, setFilter] = useState<string>('');
+
+  const dataSource = useMemo((): Pokemon[] => {
+    return list.filter(item => item.name.startsWith(filter));
+  }, [list, filter]);
+
   const Column = memo(({ index, style }: any) => (
-    <ListItem pokemon={list[index]} style={style} />
+    <ListItem pokemon={dataSource[index]} style={style} />
   ), areEqual);
 
   return (
@@ -20,12 +26,14 @@ const PokemonSelector: FC<Props> = ({ list }) => {
       <Input
         placeholder="Type to filter"
         label="Select a Pokemon"
+        value={filter}
+        onChange={(value: string) => setFilter(value)}
       />
       <AutoSizer className="mt-5 inline-block">
         {({ width }) => (
           <List
             height={300}
-            itemCount={list.length}
+            itemCount={dataSource.length}
             itemSize={300}
             layout="horizontal"
             className="scrollable"

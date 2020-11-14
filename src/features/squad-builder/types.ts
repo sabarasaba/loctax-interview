@@ -6,5 +6,5 @@ export interface Pokemon {
   id: number;
   name: string;
   image: string;
-  types: Array<PokemonType>;
+  types: PokemonType[];
 }
