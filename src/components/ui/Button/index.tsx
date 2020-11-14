@@ -5,8 +5,8 @@ import React, {
   JSXElementConstructor,
   useRef,
 } from 'react';
-import mergeRefs from 'react-merge-refs';
 import { useButton } from 'react-aria';
+import mergeRefs from 'react-merge-refs';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;

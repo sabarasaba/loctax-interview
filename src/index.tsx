@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
+import 'src/assets/css/main.css';
 import Layout from 'src/components/Layout';
 import SquadBuilder from 'src/features/squad-builder';
 
