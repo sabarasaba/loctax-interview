@@ -2,7 +2,7 @@ import React, { FC, memo, useState, useMemo } from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List, areEqual } from 'react-window';
 
-import ListItem from './ListItem';
+import PokeCard from '../PokeCard';
 import { Pokemon } from '../types';
 import { Input } from 'src/components/ui';
 
@@ -19,7 +19,9 @@ const PokemonSelector: FC<Props> = ({ list, showDetailsModal }) => {
   }, [list, filter]);
 
   const Column = memo(({ index, style }: any) => (
-    <ListItem pokemon={dataSource[index]} {...{ style, showDetailsModal }} />
+    <div className="p-5 " style={style}>
+      <PokeCard pokemon={dataSource[index]} onClick={() => showDetailsModal(dataSource[index].name)} />
+    </div>
   ), areEqual);
 
   return (

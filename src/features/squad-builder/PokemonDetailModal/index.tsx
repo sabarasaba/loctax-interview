@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { useQuery } from '@apollo/client';
 
-import { PokemonStat } from '../types';
 import { Modal } from 'src/components/ui';
 import { getPokemonByName } from '../queries';
 import AddToSquadForm from './AddToSquadForm';
+import { PokemonStat, PokemonType } from '../types';
 
 interface Props {
   showFor: string | null;
@@ -23,9 +23,24 @@ const PokemonDetails: FC<Props> = ({ showFor, onClose }) => {
     <Modal open={!!showFor} onClose={onClose}>
       {!isLoading && (
         <>
-          <h3 className="text-accents-8 text-base capitalize font-medium mb-6">#{data.Pokemon.id} - {data.Pokemon.name}</h3>
+          <h3 className="flex items-center text-accents-8 text-base capitalize font-medium mb-6">
+            <span>
+              #{data.Pokemon.id} - {data.Pokemon.name}
+            </span>
+            <span className="ml-3">
+              {data.Pokemon.types.map((type: PokemonType, index: number) => (
+                <span
+                  key={index}
+                  style={{ padding: '3px 6px' }}
+                  className={`bg-${type.name.toLowerCase()} rounded mr-2 text-base-bg uppercase font-bold text-xs`}
+                >
+                  {type.name}
+                </span>
+              ))}
+            </span>
+          </h3>
 
-          <div className="flex mt-3">
+          <div className="flex mt-3 mb-3">
             <div className="rounded mr-6 bg-accents-2">
               <img
                 className="mx-auto"
@@ -52,7 +67,7 @@ const PokemonDetails: FC<Props> = ({ showFor, onClose }) => {
             </div>
           </div>
 
-          <AddToSquadForm moves={data.Pokemon.moves} />
+          <AddToSquadForm id={data.Pokemon.id} moves={data.Pokemon.moves} />
         </>
       )}
     </Modal>
