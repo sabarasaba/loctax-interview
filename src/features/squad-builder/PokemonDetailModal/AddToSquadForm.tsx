@@ -1,13 +1,15 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { ValueType } from 'react-select';
 
 import { PokemonMove } from '../types';
 import { normalize } from 'src/utils/strings';
+import { SquadBuilderContext } from '../context';
 import { Select, Button } from 'src/components/ui';
 
 interface Props {
-  moves: PokemonMove[];
   id: number;
+  moves: PokemonMove[];
+  onClose: (...args: any[]) => any;
 }
 
 type OptionType = {
@@ -22,8 +24,20 @@ const serializeOptions = (moves: PokemonMove[]): OptionType[] => {
   }));
 };
 
-const AddToSquadForm: FC<Props> = ({ moves }) => {
+const AddToSquadForm: FC<Props> = ({ id, moves, onClose }) => {
+  const { actions } = useContext<any>(SquadBuilderContext);
   const [selectedMoves, setSelectedMoves] = useState<ValueType<OptionType>[]>([]);
+
+  const onSubmit = () => {
+    // Add submitted pokemon to our squad builder context
+    actions.addPokemonToSquad({
+      id,
+      moves: selectedMoves.map((option: any) => ({ name: option.value }))
+    });
+
+    // Then we can go ahead and close the modal
+    onClose();
+  };
 
   return (
     <>
@@ -39,9 +53,7 @@ const AddToSquadForm: FC<Props> = ({ moves }) => {
       />
 
       <div className="mt-8 flex justify-end">
-        <Button
-          disabled={selectedMoves?.length !== 4}
-        >
+        <Button onClick={onSubmit} disabled={selectedMoves?.length !== 4}>
           Save
         </Button>
       </div>

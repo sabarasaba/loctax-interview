@@ -11,6 +11,11 @@ export interface PokemonMove {
   name: string;
 }
 
+export interface SelectedPokemon {
+  id: number;
+  moves?: PokemonMove[];
+}
+
 export interface Pokemon {
   id: number;
   name: string;
@@ -18,4 +23,5 @@ export interface Pokemon {
   types: PokemonType[];
   stats?: PokemonStat[];
   moves?: PokemonMove[];
+  selectedMoves?: PokemonMove[];
 }

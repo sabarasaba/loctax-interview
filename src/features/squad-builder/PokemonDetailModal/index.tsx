@@ -67,7 +67,11 @@ const PokemonDetails: FC<Props> = ({ showFor, onClose }) => {
             </div>
           </div>
 
-          <AddToSquadForm id={data.Pokemon.id} moves={data.Pokemon.moves} />
+          <AddToSquadForm
+            onClose={onClose}
+            id={data.Pokemon.id}
+            moves={data.Pokemon.moves}
+          />
         </>
       )}
     </Modal>
