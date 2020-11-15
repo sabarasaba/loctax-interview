@@ -18,6 +18,8 @@ const PokemonSelector: FC<Props> = ({ list, showDetailsModal }) => {
     return list.filter(item => item.name.startsWith(filter));
   }, [list, filter]);
 
+  // List items are expensive to render, so lets memoize them to avoid unnecessary
+  // re-renders.
   const Column = memo(({ index, style }: any) => (
     <div className="p-5 " style={style}>
       <PokeCard pokemon={dataSource[index]} onClick={() => showDetailsModal(dataSource[index].name)} />
