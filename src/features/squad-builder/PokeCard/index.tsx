@@ -4,15 +4,16 @@ import { Pokemon } from '../types';
 
 interface Props {
   children?: any;
+  disabled?: boolean;
   pokemon: Pokemon;
   onClick?: (...args: any[]) => any;
 }
 
-const PokeDeets: FC<Props> = ({ pokemon, children, onClick }) => {
+const PokeDeets: FC<Props> = ({ pokemon, disabled, children, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="h-full overflow-hidden w-full border-2 border-transparent rounded-md bg-white shadow-lg cursor-pointer transition duration-100 ease-in-out hover:border-base-success"
+      className={`${disabled ? 'pointer-events-none' : ''} h-full overflow-hidden w-full border-2 border-transparent rounded-md bg-white shadow-lg cursor-pointer transition duration-100 ease-in-out hover:border-base-success`}
     >
       <div className="bg-accents-2">
         <img
